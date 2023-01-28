@@ -1,0 +1,9 @@
+.CreateTodoButton {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.CreateTodoButton:hover {
+  cursor: pointer;
+}

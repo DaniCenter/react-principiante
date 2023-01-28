@@ -1,0 +1,23 @@
+.TodoSearch {
+  background-color: rgba(251, 244, 233, 0.3);
+  border: none;
+  width: 95%;
+  height: auto;
+  min-height: 4rem;
+  border-radius: 5px;
+  box-shadow: -1px 5px 2px -1px rgba(0, 0, 0, 0.26);
+  -webkit-box-shadow: -1px 5px 2px -1px rgba(0, 0, 0, 0.26);
+  -moz-box-shadow: -1px 5px 2px -1px rgba(0, 0, 0, 0.26);
+  resize: none;
+  font-size: x-large;
+  color: #959185;
+}
+
+.TodoSearch:focus {
+  border: #a59876 solid 1px;
+}
+
+.TodoSearch::placeholder {
+  color: #a59876;
+  opacity: 0.3;
+}

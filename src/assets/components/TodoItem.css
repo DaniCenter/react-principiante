@@ -1,0 +1,19 @@
+.TodoItem {
+  margin-top: 1rem;
+  list-style: none;
+  display: flex;
+}
+
+.TodoItem > p {
+  width: 80%;
+  text-align: start;
+  color: #9d9a8f;
+  font-size: 15px;
+  font-family: "Paprika", cursive;
+  padding-bottom: 0.5rem;
+  border-bottom: #c3bfb6 solid 1px;
+}
+
+.TodoItem > img {
+  cursor: pointer;
+}
