@@ -11,10 +11,12 @@
   resize: none;
   font-size: x-large;
   color: #959185;
+  padding: 0.5rem;
 }
 
 .TodoSearch:focus {
-  border: #a59876 solid 1px;
+  outline: none;
+  border: #a59876 solid 2px;
 }
 
 .TodoSearch::placeholder {
