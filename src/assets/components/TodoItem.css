@@ -11,9 +11,35 @@
   font-size: 15px;
   font-family: "Paprika", cursive;
   padding-bottom: 0.5rem;
-  border-bottom: #c3bfb6 solid 1px;
+  border-bottom: #b6c3b7 solid 1px;
 }
 
 .TodoItem > img {
+  filter: invert(72%) sepia(7%) saturate(1271%) hue-rotate(6deg) brightness(84%) contrast(86%);
+  margin: 0 1px;
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.TodoItem > img:nth-child(2):hover {
+  filter: invert(24%) sepia(46%) saturate(2440%) hue-rotate(339deg) brightness(117%) contrast(93%);
+  transform: scale(1.15);
+}
+
+.TodoItem > img:nth-child(3):hover {
+  filter: invert(23%) sepia(99%) saturate(2753%) hue-rotate(105deg) brightness(97%) contrast(103%);
+  transform: scale(1.15);
+}
+
+.TodoItem--True > p {
+  text-decoration: line-through;
+}
+
+.TodoItem--True > img:nth-child(3) {
+  scale: 1.15 !important;
+  filter: invert(23%) sepia(99%) saturate(2753%) hue-rotate(105deg) brightness(97%) contrast(103%) !important;
+}
+
+.TodoItem--True > img:nth-child(3):hover {
+  transform: none;
 }
