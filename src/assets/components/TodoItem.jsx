@@ -1,7 +1,7 @@
 import React from "react";
 import "./TodoItem.css";
-import x from "../../../public/delete.svg";
-import xx from "../../../public/check2.svg";
+import x from "../img/delete.svg";
+import xx from "../img/check2.svg";
 
 const TodoItem = (props) => {
   return (

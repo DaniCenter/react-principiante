@@ -4,7 +4,7 @@ import { TodoSearch } from "./TodoSearch";
 import { TodoList } from "./TodoList";
 import { TodoItem } from "./TodoItem";
 import { CreateTodoButton } from "./CreateTodoButton";
-
+import slide from "../img/slide.webp";
 const todos = [
   { text: "Jugar lolsito", completed: true },
   { text: "Estudiar", completed: false },
@@ -14,7 +14,7 @@ const todos = [
 function App() {
   return (
     <React.Fragment>
-      <img src="../../../public/slide.webp" alt="slide" />
+      <img src={slide} alt="slide" />
       <div>
         <TodoCounter />
 
