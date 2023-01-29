@@ -4,9 +4,6 @@ import x from "../img/delete.svg";
 import xx from "../img/check2.svg";
 
 const TodoItem = (props) => {
-  function onComplete() {
-    alert(`Se completo la tarea: ${props.text}`);
-  }
   function onDelete() {
     alert(`Eliminaste la tarea: ${props.text}`);
   }
@@ -15,7 +12,7 @@ const TodoItem = (props) => {
     <li className={`TodoItem ${props.completed ? "TodoItem--True" : ""}`}>
       <p>{props.text}</p>
       <img src={x} alt="delete" onClick={onDelete} />
-      <img src={xx} alt="check2" onClick={onComplete} />
+      <img src={xx} alt="check2" onClick={props.onComplete} />
     </li>
   );
 };

@@ -12,14 +12,22 @@ const defaultTodos = [
 ];
 
 function App() {
-  let [todos, setTodos] = React.useState(defaultTodos);
+  const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState("");
-
-  const completedTodos = todos.filter((todo) => todo.completed).length;
-  const totalTodos = todos.length;
+  const [completedTodos, setCompletedTodos] = React.useState(defaultTodos.filter((todo) => todo.completed).length);
+  let totalTodos = todos.length;
+  console.log(completedTodos);
 
   if (searchValue.length > 0) {
-    todos = todos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLowerCase()));
+    setTodos(todos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLowerCase())));
+  }
+
+  function onComplete(event) {
+    const elementText = event.target.parentElement;
+    elementText.classList.toggle("TodoItem--True");
+    const todoCheck = defaultTodos.find((todo) => todo.text.toLowerCase() === elementText.childNodes[0].innerText.toLowerCase());
+    todoCheck.completed = todoCheck.completed ? false : true;
+    todoCheck.completed ? setCompletedTodos(completedTodos + 1) : setCompletedTodos(completedTodos - 1);
   }
 
   return (
@@ -35,7 +43,7 @@ function App() {
 
         <TodoList>
           {todos.map((todo) => (
-            <TodoItem text={todo.text} key={todo.text} completed={todo.completed} />
+            <TodoItem text={todo.text} key={todo.text} completed={todo.completed} onComplete={(event) => onComplete(event)} />
           ))}
         </TodoList>
       </div>
