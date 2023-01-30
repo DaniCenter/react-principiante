@@ -1,10 +1,10 @@
 import React from "react";
-import { TodoCounter } from "./TodoCounter";
-import { TodoSearch } from "./TodoSearch";
-import { TodoList } from "./TodoList";
-import { TodoItem } from "./TodoItem";
-import { CreateTodoButton } from "./CreateTodoButton";
 import slide from "../img/slide.webp";
+import { CreateTodoButton } from "./CreateTodoButton";
+import { TodoCounter } from "./TodoCounter";
+import { TodoItem } from "./TodoItem";
+import { TodoList } from "./TodoList";
+import { TodoSearch } from "./TodoSearch";
 const defaultTodos = [
   { text: "Jugar lolsito", completed: true },
   { text: "Estudiar", completed: false },
