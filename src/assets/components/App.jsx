@@ -32,7 +32,9 @@ function App() {
   function onDelete(event) {
     const elementText = event.target.parentElement;
     setTodos(todos.filter((todos) => todos.text.toLowerCase() !== elementText.childNodes[0].innerText.toLowerCase()));
-    setCompletedTodos(completedTodos - 1);
+    if (completedTodos > 0) {
+      setCompletedTodos(completedTodos - 1);
+    }
   }
 
   return (
