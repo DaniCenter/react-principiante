@@ -2,6 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./assets/components/App";
 import "./normalize.css";
-import "./index.css";
+import "./main.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
