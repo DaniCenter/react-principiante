@@ -17,9 +17,13 @@ function App() {
   const [completedTodos, setCompletedTodos] = React.useState(defaultTodos.filter((todo) => todo.completed).length);
   let totalTodos = todos.length;
 
-  if (searchValue.length > 0) {
-    setTodos(todos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLowerCase())));
-  }
+  React.useEffect(() => {
+    if (searchValue.length > 0) {
+      setTodos(defaultTodos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLowerCase())));
+    } else {
+      setTodos(defaultTodos);
+    }
+  }, [searchValue]);
 
   function onComplete(event) {
     const elementText = event.target.parentElement;
