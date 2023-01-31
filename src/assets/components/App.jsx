@@ -5,7 +5,7 @@ import { TodoCounter } from "./TodoCounter";
 import { TodoItem } from "./TodoItem";
 import { TodoList } from "./TodoList";
 import { TodoSearch } from "./TodoSearch";
-const defaultTodos = [
+let defaultTodos = [
   { text: "Jugar lolsito", completed: true },
   { text: "Estudiar", completed: false },
   { text: "Preparar la comida", completed: false },
@@ -35,9 +35,10 @@ function App() {
 
   function onDelete(event) {
     const elementText = event.target.parentElement;
-    setTodos(todos.filter((todos) => todos.text.toLowerCase() !== elementText.childNodes[0].innerText.toLowerCase()));
-    if (completedTodos > 0) {
-      setCompletedTodos(todos.filter((todo) => todo.completed).length);
+    defaultTodos = defaultTodos.filter((todos) => todos.text.toLowerCase() !== elementText.childNodes[0].innerText.toLowerCase());
+    setTodos(defaultTodos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLowerCase())));
+    if ([...elementText.classList].includes("TodoItem--True")) {
+      setCompletedTodos(completedTodos - 1);
     }
   }
 
