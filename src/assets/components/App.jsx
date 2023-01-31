@@ -37,7 +37,7 @@ function App() {
     const elementText = event.target.parentElement;
     setTodos(todos.filter((todos) => todos.text.toLowerCase() !== elementText.childNodes[0].innerText.toLowerCase()));
     if (completedTodos > 0) {
-      setCompletedTodos(completedTodos - 1);
+      setCompletedTodos(todos.filter((todo) => todo.completed).length);
     }
   }
 
