@@ -1,44 +1,52 @@
 import React from "react";
 import { AppUI } from "./AppUI";
 
-let defaultTodos = [
-  { text: "Jugar lolsito", completed: true },
-  { text: "Estudiar", completed: false },
-  { text: "Preparar la comida", completed: false },
-];
-
 function App() {
-  const [todos, setTodos] = React.useState(defaultTodos);
+  let localStorageTodos;
+  if (localStorage.getItem("TODOS_V1")) {
+    localStorageTodos = JSON.parse(localStorage.getItem("TODOS_V1"));
+  } else {
+    localStorage.setItem("TODOS_V1", JSON.stringify([]));
+    localStorageTodos = [];
+  }
+  const [todos, setTodos] = React.useState(localStorageTodos);
   const [searchValue, setSearchValue] = React.useState("");
-  const [completedTodos, setCompletedTodos] = React.useState(defaultTodos.filter((todo) => todo.completed).length);
+  const [completedTodos, setCompletedTodos] = React.useState(localStorageTodos.filter((todo) => todo.completed).length);
   let totalTodos = todos.length;
 
   React.useEffect(() => {
     if (searchValue.length > 0) {
-      setTodos(defaultTodos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLowerCase())));
+      setTodos(localStorageTodos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLowerCase())));
     } else {
-      setTodos(defaultTodos);
+      setTodos(localStorageTodos);
     }
   }, [searchValue]);
 
   React.useEffect(() => {
     setCompletedTodos(todos.filter((todo) => todo.completed).length);
   }, [todos]);
+
+  function saveTodos() {
+    localStorage.setItem("TODOS_V1", JSON.stringify(localStorageTodos));
+  }
+
   function onComplete(event) {
     const elementText = event.target.parentElement;
     elementText.classList.toggle("TodoItem--True");
-    const todoCheck = defaultTodos.find((todo) => todo.text.toLowerCase() === elementText.childNodes[0].innerText.toLowerCase());
+    const todoCheck = localStorageTodos.find((todo) => todo.text.toLowerCase() === elementText.childNodes[0].innerText.toLowerCase());
     todoCheck.completed = todoCheck.completed ? false : true;
     todoCheck.completed ? setCompletedTodos(completedTodos + 1) : setCompletedTodos(completedTodos - 1);
+    saveTodos();
   }
 
   function onDelete(event) {
     const elementText = event.target.parentElement;
-    defaultTodos = defaultTodos.filter((todos) => todos.text.toLowerCase() !== elementText.childNodes[0].innerText.toLowerCase());
-    setTodos(defaultTodos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLowerCase())));
+    localStorageTodos = localStorageTodos.filter((todos) => todos.text.toLowerCase() !== elementText.childNodes[0].innerText.toLowerCase());
+    setTodos(localStorageTodos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLowerCase())));
     if ([...elementText.classList].includes("TodoItem--True")) {
       setCompletedTodos(completedTodos - 1);
     }
+    saveTodos();
   }
 
   return (
