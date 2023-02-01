@@ -1,10 +1,6 @@
 import React from "react";
-import slide from "../img/slide.webp";
-import { CreateTodoButton } from "./CreateTodoButton";
-import { TodoCounter } from "./TodoCounter";
-import { TodoItem } from "./TodoItem";
-import { TodoList } from "./TodoList";
-import { TodoSearch } from "./TodoSearch";
+import { AppUI } from "./AppUI";
+
 let defaultTodos = [
   { text: "Jugar lolsito", completed: true },
   { text: "Estudiar", completed: false },
@@ -26,8 +22,8 @@ function App() {
   }, [searchValue]);
 
   React.useEffect(() => {
-    setCompletedTodos(todos.filter((todo) => todo.completed).length)
-  }, [todos])
+    setCompletedTodos(todos.filter((todo) => todo.completed).length);
+  }, [todos]);
   function onComplete(event) {
     const elementText = event.target.parentElement;
     elementText.classList.toggle("TodoItem--True");
@@ -46,29 +42,15 @@ function App() {
   }
 
   return (
-    <React.Fragment>
-      <img src={slide} alt="slide" />
-      <div>
-        <TodoCounter completedTodos={completedTodos} totalTodos={totalTodos} />
-
-        <form className="form">
-          <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-          <CreateTodoButton />
-        </form>
-
-        <TodoList>
-          {todos.map((todo) => (
-            <TodoItem
-              text={todo.text}
-              key={todo.text}
-              completed={todo.completed}
-              onComplete={(event) => onComplete(event)}
-              onDelete={(event) => onDelete(event)}
-            />
-          ))}
-        </TodoList>
-      </div>
-    </React.Fragment>
+    <AppUI
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      todos={todos}
+      onComplete={onComplete}
+      onDelete={onDelete}
+    />
   );
 }
 

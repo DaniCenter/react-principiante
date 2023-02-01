@@ -1,5 +1,5 @@
 import React from "react";
-import check from "../img/check.svg";
+import check from "../../img/check.svg";
 import "./CreateTodoButton.css";
 
 const CreateTodoButton = () => {
