@@ -25,6 +25,9 @@ function App() {
     }
   }, [searchValue]);
 
+  React.useEffect(() => {
+    setCompletedTodos(todos.filter((todo) => todo.completed).length)
+  }, [todos])
   function onComplete(event) {
     const elementText = event.target.parentElement;
     elementText.classList.toggle("TodoItem--True");
