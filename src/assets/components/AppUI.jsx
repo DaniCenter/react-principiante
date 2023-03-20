@@ -6,7 +6,7 @@ import { TodoItem } from "./TodoItem";
 import { TodoList } from "./TodoList";
 import { TodoSearch } from "./TodoSearch";
 
-function AppUI({ completedTodos, totalTodos, searchValue, setSearchValue, todos, onComplete, onDelete }) {
+function AppUI({ completedTodos, totalTodos, searchValue, setSearchValue, todos, onComplete, onDelete, onCreate }) {
   return (
     <React.Fragment>
       <img src={slide} alt="slide" />
@@ -15,7 +15,7 @@ function AppUI({ completedTodos, totalTodos, searchValue, setSearchValue, todos,
 
         <form className="form">
           <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-          <CreateTodoButton />
+          <CreateTodoButton onCreate={onCreate} />
         </form>
 
         <TodoList>

@@ -49,6 +49,13 @@ function App() {
     saveTodos();
   }
 
+  function onCreate(event) {
+    const newTodo = { completed: false, text: event.target.closest("form").querySelector("input").value };
+    localStorageTodos.push(newTodo);
+    setTodos([...todos, newTodo]);
+    saveTodos();
+  }
+
   return (
     <AppUI
       completedTodos={completedTodos}
@@ -58,6 +65,7 @@ function App() {
       todos={todos}
       onComplete={onComplete}
       onDelete={onDelete}
+      onCreate={onCreate}
     />
   );
 }
